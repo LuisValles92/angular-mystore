@@ -1,7 +1,8 @@
 # angular-mystore
 _Angular | GitHub Pages_  
 Pruébalo - Aplicación de muestra desplegada sobre GitHub Pages.  
-Cubre los temas principales — componentes, sintaxis de plantilla, enrutamiento, servicios y acceso a datos a través de HTTP.  
+Cubre los temas principales — componentes, sintaxis de plantilla, enrutamiento, servicios y acceso a datos a través de HTTP.
+  
 [Enlace](https://luisvalles92.github.io/angular-mystore/) | [Tutorial](https://docs.angular.lat/start) | [Repositorio](https://github.com/LuisValles92/angular-mystore)
   
 # ProyectoMyStore
