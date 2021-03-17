@@ -1,0 +1,37 @@
+<h2>Products</h2>
+<!-- 
+  En el proceso, ha aprendido a usar cinco características comunes de la sintaxis de la plantilla de Angular:
+  
+  Las directivas con un asterisco *, son directivas estructurales.
+  *ngFor - Da forma o remodela la estructura del DOM, generalmente agregando, quitando y manipulando los elementos a los que están adjuntos.
+  *ngIf - Directiva para que Angular solo cree el elemento si el producto actual tiene una descripción.
+
+  La sintaxis de enlace de propiedad [ ].
+
+  Para mostrar los nombres de los productos, utilice la sintaxis de interpolación {{ }}. La interpolación representa el valor de una propiedad como texto.
+
+  El enlace de eventos utiliza un conjunto de paréntesis, ( ).
+
+  La directiva RouterLink le da al enrutador control sobre el elemento de anclaje. En este caso, la ruta, o URL, contiene un segmento fijo /products, mientras que el segmento final es variable, insertando la propiedad id del producto actual.
+-->
+<div *ngFor="let product of products; index as productId">
+  <h3>
+    <a [title]="product.name + ' details'" [routerLink]="['/products', productId]">
+      {{ product.name }}
+    </a>
+  </h3>
+  <p *ngIf="product.description">
+    Description: {{ product.description }}
+  </p>
+  <app-product-alerts [product]="product" (notify)="onNotify()">
+  </app-product-alerts>
+  <button (click)="share(product.name)">
+    Share
+  </button>
+</div>
+
+<!-- 
+Copyright Google LLC. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->
