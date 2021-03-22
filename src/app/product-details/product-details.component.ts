@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 
-import { Phone } from "../interface";
-import { products } from "../products";
+import { Phone } from "../phone";
+import { PRODUCTS } from "../products";
 import { CartService } from "../cart.service";
 
 @Component({
@@ -11,11 +11,7 @@ import { CartService } from "../cart.service";
   styleUrls: ["./product-details.component.css"]
 })
 export class ProductDetailsComponent implements OnInit {
-  product: Phone = {
-    name: "",
-    price: 0,
-    description: ""
-  };
+  product!: Phone;
 
   /*
   ActivatedRoute es específico para cada componente enrutado que carga el enrutador angular. Contiene información sobre la ruta, sus parámetros y datos adicionales asociados con la ruta.
@@ -29,13 +25,13 @@ export class ProductDetailsComponent implements OnInit {
   /*
   Los parámetros de la ruta corresponden a las variables de ruta que define en la ruta. La URL que coincide con la ruta proporciona el productId. Angular usa productIdpara mostrar los detalles de cada producto único.
   */
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.product = products[+Number(params.get("productId"))];
+      this.product = PRODUCTS[+Number(params.get("productId"))];
     });
   }
 
-  addToCart(product: Phone) {
+  addToCart(product: Phone): void {
     this.cartService.addToCart(product);
     window.alert("Your product has been added to the cart!");
   }

@@ -1,7 +1,10 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
-import { Phone } from "./interface";
+import { Observable } from "rxjs";
+
+import { Phone } from "./phone";
+import { Shipping } from "./shipping";
 
 @Injectable({
   providedIn: "root"
@@ -11,21 +14,21 @@ export class CartService {
 
   constructor(private http: HttpClient) { }
 
-  addToCart(product: Phone) {
+  addToCart(product: Phone): void {
     this.items.push(product);
   }
 
-  getItems() {
+  getItems(): Phone[] {
     return this.items;
   }
 
-  clearCart() {
+  clearCart(): Phone[] {
     this.items = [];
     return this.items;
   }
 
   //Método GET
-  getShippingPrices() {
-    return this.http.get("./assets/shipping.json");
+  getShippingPrices(): Observable<Shipping[]> {
+    return this.http.get<Shipping[]>("./assets/shipping.json");
   }
 }

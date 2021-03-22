@@ -7,7 +7,7 @@ import { Output, EventEmitter } from "@angular/core";
 class - Maneja la funcionalidad del componente.
 */
 
-import { Phone } from "../interface";
+import { Phone } from "../phone";
 
 @Component({
   selector: "app-product-alerts",
@@ -16,15 +16,11 @@ import { Phone } from "../interface";
 })
 export class ProductAlertsComponent {
   // https://docs.angular.lat/api/core/Input
-  @Input() product: Phone = {
-    name: "",
-    price: 0,
-    description: ""
-  };
+  @Input() product!: Phone;
   /*
   Define a property named notify with an @Output() decorator and an instance of EventEmitter(). This allows the product alert component to emit an event when the value of the notify property changes.
   https://docs.angular.lat/api/core/Output
   https://docs.angular.lat/api/core/EventEmitter
   */
-  @Output() notify = new EventEmitter();
+  @Output() notify: EventEmitter<any> = new EventEmitter();
 }
